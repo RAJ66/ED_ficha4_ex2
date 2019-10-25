@@ -5,6 +5,9 @@
  */
 package com.mycompany.ficha4_ex2;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author vitor
@@ -17,21 +20,78 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         CircularArrayQueue lista = new CircularArrayQueue();
-        int escolha = 0;
 
-        switch (escolha) {
-            case 0: //teste de adicionar 1 elementos
+        int numeroTeste = 7;
+
+        switch (numeroTeste) {
+            case 0: //teste adicionar 1 elemento
                 lista.enqueue(1);
                 System.out.println(lista.toString());
                 break;
-            case 1: //teste de adicionar n elementos
+            case 1:
+                //teste encher lista
                 lista.enqueue(1);
                 lista.enqueue(2);
                 lista.enqueue(3);
+                System.out.println(lista.toString());
+                break;
+            case 2:
 
+                try {
+                    //testar remover lista vazia
+                    lista.dequeue();
+                } catch (EmptyCollectionException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println(lista.toString());
+                break;
+            case 3:
+                try {
+                    //testar remover elementos da lista
+                    lista.enqueue(1);
+                    lista.enqueue(2);
+                    lista.enqueue(3);
+                    lista.dequeue();
+                    lista.dequeue();
+                    lista.enqueue(4);
+                } catch (EmptyCollectionException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println(lista.toString());
+                break;
+
+            case 4://teste se esta vazio e esta
+                System.out.println(lista.isEmpty());
+                System.out.println(lista.toString());
+                break;
+            case 5://teste se esta vazio e nao esta
+                lista.enqueue(1);
+                System.out.println(lista.isEmpty());
+                System.out.println(lista.toString());
+                break;
+            case 6:
+                try {
+                    //testar do fist sem ter nada
+                    System.out.println(lista.first());
+                } catch (EmptyCollectionException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println(lista.toString());
+                break;
+
+            case 7:
+                try {
+                    //testar do fist a ter elemtentos la dentro
+                    lista.enqueue(1);
+                    lista.enqueue(2);
+                    lista.enqueue(3);
+
+                    System.out.println(lista.first());
+                } catch (EmptyCollectionException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 System.out.println(lista.toString());
                 break;
         }
-
     }
 }

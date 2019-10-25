@@ -42,50 +42,70 @@ public class CircularArrayQueue<T> implements QueueADT<T> {
 
     @Override
     public T dequeue() throws EmptyCollectionException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.isEmpty()) {
+            throw new EmptyCollectionException("Nao tem");
+        }
+        T current = this.queue[this.front];
+        this.queue[this.front] = null;
+        this.front = (this.front + 1) % this.queue.length;
+        this.count--;
+        return current;
     }
 
     @Override
     public T first() throws EmptyCollectionException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.isEmpty()) {
+            throw new EmptyCollectionException("Nao tem");
+
+        } else {
+            return this.queue[this.front];
+        }
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.count == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public int size() {
         return this.count;
     }
-    
+
     @Override
 
     public String toString() {
-        /*
-        String s = "";
-        s = s+"\nTop:"+this.top+" Tamanho:"+this.stack.length+"\n";
-        for (int i = 0; i < this.size(); i++) {
-            s=s+this.stack[i]+"//";
-        }
-        return s;
-         */
+        int t = this.front;
         StringBuilder str = new StringBuilder();
-        str.append("\nFront: ");
-        str.append(this.front+"-"+this.queue[this.front]);
-
-        str.append("\nRear: ");
-        str.append(this.rear+"-"+this.queue[this.rear]);
-
-        str.append(" Tamanho:");
-        str.append(this.count);
+        str.append("Front: ");
+        str.append("Conteudo: ");
+        str.append(this.queue[this.front]);
+        str.append("|");
+        str.append("Posição: ");
+        str.append(this.front);
+        str.append("\n");
+        str.append("Rear: ");
+        str.append("Conteudo: ");
+        str.append(this.queue[this.rear]);
+        str.append("|");
+        str.append("Posição: ");
+        str.append(this.rear);
+        str.append("\n");
+        str.append("Tamanho: ");
+        str.append(this.size());
+        str.append("\n");
+        str.append("Tamanho Stack: ");
+        str.append(this.queue.length);
         str.append("\n");
         for (int i = 0; i < this.size(); i++) {
-            str.append(this.queue[i]);
-            str.append("//");
+            str.append(this.queue[t]);
+            str.append("\n");
+            t = (t + 1) % this.queue.length;
         }
-
         return str.toString();
     }
 
