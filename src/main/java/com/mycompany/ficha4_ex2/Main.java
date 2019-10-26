@@ -21,7 +21,7 @@ public class Main {
         // TODO code application logic here
         CircularArrayQueue lista = new CircularArrayQueue();
 
-        int numeroTeste = 7;
+        int numeroTeste = 9;
 
         switch (numeroTeste) {
             case 0: //teste adicionar 1 elemento
@@ -85,6 +85,38 @@ public class Main {
                     lista.enqueue(1);
                     lista.enqueue(2);
                     lista.enqueue(3);
+
+                    System.out.println(lista.first());
+                } catch (EmptyCollectionException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println(lista.toString());
+                break;
+
+            case 8:
+                try {
+                    //testar1 expandCapacity
+                    lista.enqueue(1);
+                    lista.enqueue(2);
+                    lista.enqueue(3);
+
+                    System.out.println(lista.first());
+                } catch (EmptyCollectionException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println(lista.toString());
+                break;
+
+            case 9:
+                try {
+                    //testar2 expandCapacity
+                    lista.enqueue(1);
+                    lista.enqueue(2);
+                    lista.enqueue(3);
+                    lista.enqueue(4);
+                    lista.dequeue();
+                                        lista.enqueue(1);
+
 
                     System.out.println(lista.first());
                 } catch (EmptyCollectionException ex) {
